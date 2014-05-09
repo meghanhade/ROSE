@@ -1,92 +1,59 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Rose : ROSE map" />
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.css' rel='stylesheet' />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Rose</title>
+    <script src='http://api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.js'></script>
+    <style>
+      #map {
+        height:500px;
+        width: 500px;
+      }
+    </style>
   </head>
-
+  
   <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/meghanhade/ROSE">View on GitHub</a>
-
-          <h1 id="project_title">Rose</h1>
-          <h2 id="project_tagline">ROSE map</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/meghanhade/ROSE/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/meghanhade/ROSE/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <p>
-  </p>
-    <pre><code>&lt;script src='http://api.tiles.mapbox.com/mapbox.js/v1.2.0/mapbox.js'&gt;&lt;/script&gt;
-&lt;style&gt;
-  #map {
-    height:500px;
-    width: 500px;
-  }
-&lt;/style&gt;
-</code></pre>
-
-<p></p>
-
-<p></p>
-    <div></div><pre><code>&lt;script type='text/javascript'&gt;
-
-  var map = L.mapbox.map('map', 'm365.map-e3lks16p', {
-    gridLayer: {},
-    gridControl: {
-    sanitizer: function(x) { console.log(x); return x; }
-    }
-    })
-    .setView([44.9, -93], 3);
-
-  var marker = L.marker(new L.LatLng(44.9833, -93.2667), {
-    icon: L.mapbox.marker.icon({'marker-color': 'CC0033'}),
-    draggable: true
-    });
-
-  function updateMarker() {
-    var t = Math.floor(r_text.length*Math.random())
-    marker.bindPopup(r_text[t]);
-    marker.addTo(map);
-  }
-
-  updateMarker();
-
-  marker.on('dragend',updateMarker);
-
-&lt;/script&gt;
-</code></pre>
-
-<p>
-</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Rose maintained by <a href="https://github.com/meghanhade">meghanhade</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
+    <div id='map'></div><script type='text/javascript'>
+      var r_text = [
+        "Here there's a river that winds on forever",
+        "Here there's an island where all things are silent",
+        "Here there's a mountain that no man has mounted",
+        "Here there's a desert that size can't be measured",
+        "Here there's a land that time don't command",
+        "Here there are strangers, and all kinds of danger",
+        "Here there's an island coast where the only souls you'll see are ghosts",
+        "Here there's a place where the treeline breaks into wide open space",
+        "Here there's a moonlit lake where a cold wind blows and your bones start to shake",
+        "Here there's a winding road in the deep of the night, near the edge of the known",
+      ];
+    </script>
     
+    <script type='text/javascript'>
+      
+      var map = L.mapbox.map('map', 'm365.map-e3lks16p', {
+        gridLayer: {},
+        gridControl: {
+        sanitizer: function(x) { console.log(x); return x; }
+        }
+        })
+        .setView([44.9, -93], 3);
+        
+      var marker = L.marker(new L.LatLng(44.9833, -93.2667), {
+        icon: L.mapbox.marker.icon({'marker-color': 'CC0033'}),
+        draggable: true
+        });
+        
+      function updateMarker() {
+        var t = Math.floor(r_text.length*Math.random())
+        marker.bindPopup(r_text[t]);
+        marker.addTo(map);
+      }
+      
+      updateMarker();
+      
+      marker.on('dragend',updateMarker);
 
+    </script>
   </body>
+</html>
 </html>
